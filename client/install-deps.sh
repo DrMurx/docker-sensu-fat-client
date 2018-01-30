@@ -5,9 +5,9 @@ SENSU_PLUGINS=(
   # ceph
   # cgroups
   # conntrack
-  # cpu-checks
+  cpu-checks
   disk-checks
-  # dns
+  dns
   docker
   # elasticsearch
   environmental-checks
@@ -15,62 +15,77 @@ SENSU_PLUGINS=(
   hardware
   # haproxy
   http
-  # imap
+  imap
   # influxdb
   # ipmi
   # ldap
   # logstash
   lvm
   # memory-checks
-  # mongodb
-  # mysql
-  # network-checks
-  # nginx
+  mongodb
+  mysql
+  DrMurx/network-checks@2.1.2-pre3
+  nginx
   # openvpn
-  # postfix
+  postfix
   # postgres
   # process-checks
   # rabbitmq
   raid-checks
-  # redis
-  # sensu
+  redis
+  sensu
   # solr
   ssl
-  # uchiwa
+  uchiwa
   # vmstats
   wordpress
+  DrMurx/coreos@0.0.1
 )
 
 set -e
 
 apt-get update
-apt-get install -y gnupg libxml2 libxml2-dev libxslt1-dev zlib1g-dev build-essential
+apt-get install -y --no-install-recommends gnupg libxml2 libxml2-dev libxslt1-dev zlib1g-dev build-essential
+
+# pre-deps for checks which might need a docker binary
+curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian/ stretch stable' > /etc/apt/sources.list.d/docker.list
 
 # pre-deps for sensu-plugins-raid-checks
 curl -s https://hwraid.le-vert.net/debian/hwraid.le-vert.net.gpg.key | apt-key add -
 echo 'deb http://mirror.rackspace.com/hwraid.le-vert.net/debian/ stretch main' > /etc/apt/sources.list.d/megacli.list
+
 apt-get update
 
 
 # deps for sensu-plugins-disk-checks
-apt-get install -y smartmontools
+apt-get install -y --no-install-recommends smartmontools
+
+# deps for sensu-plugins-docker and other checks which might need a docker binary
+apt-get install -y --no-install-recommends docker-ce
 
 # deps for sensu-plugins-environmental-checks
-apt-get install -y lm-sensors
+apt-get install -y --no-install-recommends lm-sensors
 
 # deps for sensu-plugins-lvm
-apt-get install -y lvm2
+apt-get install -y --no-install-recommends lvm2
+
+# deps for sensu-plugins-mongodb
+apt-get install -y --no-install-recommends python-pymongo
+
+# deps for sensu-plugins-mysql
+apt-get install -y --no-install-recommends libmariadb-dev
 
 # deps for sensu-plugins-raid-checks
-apt-get install -y megacli pciutils
+apt-get install -y --no-install-recommends megacli pciutils
 
 # deps for sensu-plugins-wordpress
-apt-get install -y ruby-dev libgmp-dev libcurl4-openssl-dev 
+apt-get install -y --no-install-recommends ruby-dev libgmp-dev libcurl4-openssl-dev
 gem install cms_scanner -v 0.0.38.2
 gem install wpscan
 
-# deps for deadman-check
-apt-get install -y netcat
+# deps for deadman-check.sh
+apt-get install -y --no-install-recommends netcat
 
 
 # Install Plugins
