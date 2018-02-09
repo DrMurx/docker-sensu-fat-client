@@ -24,7 +24,7 @@ SENSU_PLUGINS=(
   # memory-checks
   mongodb
   mysql
-  DrMurx/network-checks@2.1.2-pre3
+  network-checks
   nginx
   # openvpn
   postfix
