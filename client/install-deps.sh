@@ -93,7 +93,7 @@ PARALLEL_INSTALLATION=0 UNINSTALL_BUILD_TOOLS=0 /bin/install ${SENSU_PLUGINS[@]}
 
 
 # post-deps for sensu-plugins-wordpress: compatibility to wpscan v3
-sed -i -e 's|--follow-redirection --no-color|--wp-version-all|g' /usr/local/bundle/bin/check-wpscan.rb
+sed -i -e 's|--follow-redirection --no-color|--wp-version-all --format cli-no-colour|g' /usr/local/bundle/bin/check-wpscan.rb
 wpscan --update
 
 
