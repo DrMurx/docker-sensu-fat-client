@@ -10,7 +10,7 @@ SENSU_PLUGINS=(
   dns
   docker
   # elasticsearch
-  DrMurx/environmental-checks@1.1.1-pre1
+  environmental-checks
   # filesystem-checks
   hardware
   # haproxy
