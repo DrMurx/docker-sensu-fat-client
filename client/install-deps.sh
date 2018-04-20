@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SENSU_PLUGINS=(
-  # apache
+  apache
   # ceph
   # cgroups
   # conntrack
@@ -9,26 +9,27 @@ SENSU_PLUGINS=(
   disk-checks
   dns
   docker
-  # elasticsearch
+  elasticsearch
   environmental-checks
   # filesystem-checks
   hardware
   # haproxy
   http
   imap
-  # influxdb
+  influxdb
   # ipmi
-  # ldap
-  # logstash
+  ldap
+  logstash
   lvm
   # memory-checks
   mongodb
   mysql
   network-checks
   nginx
-  # openvpn
+  openvpn
+  php-fpm
   postfix
-  # postgres
+  postgres
   # process-checks
   # rabbitmq
   raid-checks
