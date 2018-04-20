@@ -77,6 +77,9 @@ apt-get install -y --no-install-recommends python-pymongo
 # deps for sensu-plugins-mysql
 apt-get install -y --no-install-recommends libmariadb-dev
 
+# deps for sensu-plugins-mysql
+apt-get install -y --no-install-recommends libpq-dev
+
 # deps for sensu-plugins-raid-checks
 apt-get install -y --no-install-recommends megacli pciutils
 
