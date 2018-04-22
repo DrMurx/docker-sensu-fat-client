@@ -11,7 +11,8 @@ SENSU_PLUGINS=(
   docker
   elasticsearch
   environmental-checks
-  # filesystem-checks
+  filesystem-checks
+  gitlab
   hardware
   # haproxy
   http
