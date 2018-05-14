@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SENSU_PLUGINS=(
+  execute
   # irc
   # logstash
   telegram

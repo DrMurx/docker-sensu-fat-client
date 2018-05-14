@@ -11,15 +11,21 @@ SENSU_PLUGINS=(
   docker
   elasticsearch
   environmental-checks
+  etcd
   filesystem-checks
+  github
   gitlab
   hardware
-  # haproxy
+  haproxy
   http
+  icecast
   imap
   influxdb
+  io-checks
   # ipmi
+  ipvs
   ldap
+  load-checks
   logstash
   lvm
   # memory-checks
@@ -28,6 +34,7 @@ SENSU_PLUGINS=(
   network-checks
   nginx
   openvpn
+  pdns
   php-fpm
   postfix
   postgres
@@ -36,9 +43,16 @@ SENSU_PLUGINS=(
   raid-checks
   redis
   sensu
+  sftp
+  sidekiq
   # solr
   ssl
+  trafficserver
+  twemproxy
   uchiwa
+  unicorn
+  uptime-checks
+  varnish
   # vmstats
   wordpress
   DrMurx/coreos@0.0.1
@@ -68,6 +82,9 @@ apt-get install -y --no-install-recommends docker-ce
 
 # deps for sensu-plugins-environmental-checks
 apt-get install -y --no-install-recommends lm-sensors
+
+# deps for sensu-plugins-io-stats
+apt-get install -y --no-install-recommends ioping
 
 # deps for sensu-plugins-lvm
 apt-get install -y --no-install-recommends lvm2
