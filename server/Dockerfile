@@ -1,4 +1,4 @@
-FROM drmurx/sensu:1.3
+FROM drmurx/sensu:1.4
 
 COPY install-deps.sh /usr/local/bin
 
