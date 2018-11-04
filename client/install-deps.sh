@@ -30,7 +30,7 @@ SENSU_PLUGINS=(
   lvm
   # memory-checks
   mongodb
-  mysql
+  DrMurx/mysql@2.5.1-p2
   network-checks
   nginx
   openvpn
