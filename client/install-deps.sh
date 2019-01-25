@@ -42,6 +42,7 @@ SENSU_PLUGINS=(
   # rabbitmq
   raid-checks
   redis
+  erasys/restic@0.0.1
   sensu
   sftp
   sidekiq
