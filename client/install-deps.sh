@@ -17,7 +17,7 @@ SENSU_PLUGINS=(
   gitlab
   hardware
   haproxy
-  http
+  http@3.0.1
   icecast
   imap
   influxdb
