@@ -111,13 +111,23 @@ gem install wpscan
 apt-get install -y --no-install-recommends netcat
 
 
-# Install Plugins
+# Install sensu plugins
 PARALLEL_INSTALLATION=0 UNINSTALL_BUILD_TOOLS=0 /bin/install ${SENSU_PLUGINS[@]}
 
 
 # post-deps for sensu-plugins-wordpress: compatibility to wpscan v3
 sed -i -e 's|--follow-redirection --no-color|--wp-version-all --format cli-no-colour|g' /usr/local/bundle/bin/check-wpscan.rb
 wpscan --update
+
+
+# Install nagios plugins
+apt-get install -y --no-install-recommends monitoring-plugins-basic
+rm -rfv /usr/share/monitoring-plugins /usr/share/doc/monitoring-plugins-common /usr/share/doc/monitoring-plugins-basic
+mv -v /usr/lib/nagios/plugins/check_* /usr/local/bin
+
+# Install check_megaraid_sas
+curl -s 'https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=6381&cf_id=24' > /usr/local/bin/check_megaraid_sas
+chmod a+x /usr/local/bin/check_megaraid_sas
 
 
 apt-get remove -y gnupg libxml2 libxml2-dev libxslt1-dev zlib1g-dev build-essential
