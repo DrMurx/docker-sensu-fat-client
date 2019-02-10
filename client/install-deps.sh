@@ -127,6 +127,7 @@ mv -v /usr/lib/nagios/plugins/check_* /usr/local/bin
 
 # Install check_megaraid_sas
 curl -s 'https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=6381&cf_id=24' > /usr/local/bin/check_megaraid_sas
+sed -i -e 's%/usr/sbin/MegaCli%/usr/sbin/megacli%g' /usr/local/bin/check_megaraid_sas
 chmod a+x /usr/local/bin/check_megaraid_sas
 
 
